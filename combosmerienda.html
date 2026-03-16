@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cafetería con café de especialidad y pastelería artesanal." />
+  <title>Cafetería (menú)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+  <header class="site-header">   
+<!-- Botón del menú -->
+    <section class="menu">
+      <button class="btn-hamburguesa" type="button" aria-label="abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>      
+      <nav id="nav-principal" class="site-nav">
+        <a href="menu.html">Menú</a>
+        <a href="combosdesayuno.html"><span class="a-combos">Combo/desayuno</span></a>
+        <a href="combosmerienda.html"><span class="a-combos">Combo/merienda</span></a>
+        <div class="barra-contacto">
+          <a href="contacto.html">Contacto <img src="images/loguitocontacto.png" class="logo-contacto" alt=""></a>
+        </div>
+        <div class="logo-menu">
+          <img src="images/logomenu.png" alt="Logo de café para el menú">
+        </div>
+      </nav>
+    </section>  
+<!-- Cabecera de la web -->     
+    <section class="cabecera-web">
+      <img src="images/Logos Cafetería de Especialidad Delicado Negro (1).png" alt="Logo de la cafetería" class="logo">
+      <h1>Combos para la Merienda</h1>
+    </section>   
+  </header>
+
+  <main>
+<!-- Columna para comprar los cafés -->    
+    <section class="pedidos-cafe">
+      <article class="titulo-eligecafes">
+        <h2>Elige tu combo</h2>
+      </article>
+      <article class="card cafe-americano" data-prod="americano" data-price="5">
+        <h3>Café americano y Cr<span class="cafes">oissant de mante</span>ca</h3>
+        <img src="images/combo1.jpg" alt="Café americano">  
+          <div class="cantidad-control">
+            <div class="card-cantidad">
+            <span class="precio">Precio: $5</span>
+            <div class="botones">
+            <button class="sumar" type="button">+</button>
+            <span class="cantidad-numero">0</span>
+            <button class="restar" type="button">-</button>
+            </div>
+            </div>         
+          </div>
+      </article>
+        <article class="card cafe-leche" data-prod="cafeleche" data-price="8">
+          <h3>Café con leche y <br>Do<span class="cafes">s medialun</span>as</h3>
+          <img src="images/combo2.jpg" alt="Café con leche">
+          <div class="cantidad-control">
+            <div class="card-cantidad">
+            <span class="precio">Precio: $8</span>
+            <div class="botones">
+            <button class="sumar" type="button">+</button>
+            <span class="cantidad-numero">0</span>
+            <button class="restar" type="button">-</button>
+            </div>
+          </div>            
+        </article>
+        <article class="card cafe-espresso" data-prod="espresso" data-price="8">        
+          <h3>Doble espresso y<br>B<span class="cafes">age</span>l</h3>
+          <img src="images/combo3.jpg" alt="Café espresso">
+          <div class="cantidad control">
+            <div class="card-cantidad">
+            <span class="precio">Precio: $8</span>
+            <div class="botones">
+            <button class="sumar" type="button">+</button>
+            <span class="cantidad-numero">0</span>
+            <button class="restar" type="button">-</button>
+            </div>
+          </div>                      
+          </div>
+        </article>
+        <article class="card capuccino" data-prod="capuccino" data-price="12">
+          <h3>Capuccino y<br>po<span class="cafes">rción de carrot ca</span>ke</h3>
+          <img src="images/combo4.jpg" alt="Capuccino">         
+          <div class="cantidad-control">
+            <div class="card-cantidad">
+            <span class="precio">Precio: $12</span>
+            <div class="botones">
+            <button class="sumar" type="button">+</button>
+            <span class="cantidad-numero">0</span>
+            <button class="restar" type="button">-</button>
+            </div>
+          </div>
+          </div>
+        </article>
+    </section>
+
+<!-- Monto total de la compra (recuadaro) -->
+    <section class="recuadro-total">
+      <h3>Resumen de la compra</h3>
+      <hr>
+      <p class="item-resumen" data-prod="americano" data-price="5">Americano: $<span class="sub">0</span></p>
+      <hr>
+      <p class="item-resumen" data-prod="cafeleche" data-price="8">Café con leche: $<span class="sub">0</span></p>
+      <hr>
+      <p class="item-resumen" data-prod="espresso" data-price="8">Espresso: $<span class="sub">0</span></p>
+      <hr>
+      <p class="item-resumen" data-prod="capuccino" data-price="12">Capuccino: $<span class="sub">0</span></p>
+      <hr>
+      <p class="item-resumen" data-prod="cortado" data-price="8">Café cortado: $<span class="sub">0</span></p>
+      <hr>
+      <p class="item-resumen" data-prod="frappe" data-price="14">Frappé: $<span class="sub">0</span></p>
+      <hr>  
+      <p>T<span class="total-subrayado">ota</span>l: $<span id="total">0</span></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="derechos-creditos">
+      <p>&copy; Desarrollado por Lionel Florentín</p>
+    </div>
+  </footer>
+  </div>
+  <script src="script.js" defer></script>

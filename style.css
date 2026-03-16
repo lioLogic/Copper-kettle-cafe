@@ -1,0 +1,595 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Fondo de pantalla */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("images/beans-coffee-black-ice-cream-cones-with-copy-space.jpg");
+  background-size: cover;         
+  background-position: center;    
+  background-repeat: no-repeat;   
+  background-attachment: fixed;  
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("images/beans-coffee-black-ice-cream-cones-with-copy-space.jpg") center / cover no-repeat;
+  filter: blur(4px);
+  transform: scale(1.06); /* evita bordes vacíos por el blur */
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* opcional, para mejorar contraste */
+  z-index: -1;
+}
+
+* { box-sizing: border-box; }
+
+/* Cuando menu esta abierto, desenfoca el resto */
+body.menu-abierto main,
+body.menu-abierto footer,
+body.menu-abierto .cabecera-web {
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.page {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+}
+
+/* Base general */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+.page {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+}
+
+/* Fuentes base web */
+h1, h2, p {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+}
+
+h3 {
+    font-family: "Unlock", serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #fff;
+}
+
+/* Menú y botón de hamburguesa */
+.menu {
+  position: relative;
+  z-index: 110;
+}
+
+.btn-hamburguesa {
+  background: none;
+  border: 0;
+  font-size: 2.5rem;
+  cursor: pointer;
+  margin-top: 20px;
+  color: #8f6303;
+  border: 1px solid #ffffff4e;
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.btn-hamburguesa:focus-visible,
+.btn-hamburguesa:active {
+  outline: none;
+  box-shadow: 0 0 15px 3px rgba(143, 99, 3, 0.7);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-nav {
+    display: flex;
+    position: absolute; 
+    top: 120%;
+    left: 0;
+    right: 0;
+    background: #fff;
+/* decoración del recuadro */
+    border: 1px solid #00000042;
+    box-shadow: 2px 6px 12px rgba(45, 44, 44, 0.842);
+    padding: 8px 6px 6px;
+    flex-direction: column;
+    gap: 0.75rem;
+    background-color: #2b2b2b;
+    border-radius: 3px;
+    width: 380px;
+    height: 550px;
+/* Estado inicial del nav */
+    opacity: 0;
+    transform: translateX(-200%);
+    transition: 400ms ease-out;
+}
+
+.site-nav.abierto {
+  display: flex;
+  z-index: 110;
+/* Estado final del nav */
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Modificaciones individuales de los <a> */
+.barra-contacto a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-contacto {
+    max-width: 60px;
+    margin-left: 30px;
+}
+
+.a-combos {
+    color: #baa60ec0;
+}
+
+.logo-menu img {
+    max-width: 60%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+   
+}
+
+/* Cabecera de la web */
+.logo {
+    width: 180px;
+    display: block;
+    margin: 0 auto;      
+    position: relative;
+    top: -40px;          
+    left: 0;      
+}
+
+.cabecera-web h1 {
+    font-size: 34px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;      
+    position: relative;
+    top: -40px;          
+    left: 0;             
+}
+
+.cabecera-web p {
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;      
+    position: relative;
+    top: -30px;          
+    left: 0;             
+}
+
+/* Presentación de la web */
+article.presentacion {
+    border: 1px #000000a7 solid;
+    border-radius: 8px;
+    padding: 35px;
+    box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.35);
+}
+
+article.presentacion h2, p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.subrayado {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+
+.rayitas {
+    font-size: 55px;
+    color: #ffffff;
+}
+
+.cafes {
+    text-decoration: 1px underline;
+    text-underline-offset: 13px;
+}
+
+/* Columna para comprar los cafés */
+article.titulo-eligecafes h2 {
+    text-align: center;
+    border: 1px #000000 solid;
+    padding: 6px;
+    margin-bottom: 80px;
+    box-shadow: 1px 1px 18px rgba(0, 0, 0, 0.35);
+}
+
+.card h3 {
+    font-size: 30px;
+    display: block;
+}
+
+article.card {
+    background: rgba(45, 44, 44, 0.842);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(3px);
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.card-cantidad {
+    border: 1px #5b5b5b solid;
+    border-radius: 6px;
+    margin-top: 25px;
+    align-items: center;
+    padding: 20px;
+}
+
+/* botones de cantidad y precio */
+button.sumar,
+button.restar {
+    width: 35px;
+    height: 35px;
+    border-radius: 7px;
+    border: 1px solid rgba(45, 44, 44, 0.644);
+
+    font-size: 28px;
+    color: #3b3b3b;
+}
+
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    gap: 1rem;
+    margin-right: 2.5rem;
+    margin-top: -30px;
+    align-items: center;
+}
+
+/* Tipografías para las tarjetas */
+span.precio {
+    font-size: 27px;
+    color: #fff;
+
+    font-family: "Josefin Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+span.cantidad-numero {
+    font-size: 23px;
+    color: #fff;
+
+    font-family: "Josefin Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+article.card h3 {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 500px;
+    font-style: normal;
+    color: #fff;
+}
+/* Tipografía para nav-a */
+.site-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
+    color: #fff;
+    font-size: 25px;
+
+    border: 1px solid #202020d2;
+    border-radius: 3px;
+    text-align: left;
+    padding: 8px;
+}
+
+/* Contactarse por email */
+.form-email h2 {
+    font-size: 23px;
+    color: #fff;
+    margin-top: 45px;
+}
+
+.form-email a {
+    text-decoration: none;
+    color: inherit;
+    color: #c3c3c3bf;
+}
+
+/* Recuadro para el monto total de la compra */
+.recuadro-total {
+    border: 1px solid #ffffff33;
+    border-radius: 10px;
+    padding: 12px 16px;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+
+.recuadro-total h3 {
+    font-size: 15px;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #a0a0a0;
+}
+
+.item-resumen {
+    display: none;
+}
+
+.item-resumen.activo {
+    display: block;
+}
+
+.total-subrayado {
+    text-decoration: underline 2px solid #a0a0a0;
+    text-underline-offset: 6px;
+}
+
+/* Botón para pagar */
+.btn-pagar {
+    display: block;
+    margin: 20px auto 0;
+    padding: 25px 70px;
+    border-radius: 8px;
+    border: 1px rgba(255, 255, 255, 0.16);
+    background: rgba(21, 21, 21, 0.701);
+    color: #fff;
+
+    font-size: 1.5rem;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+}
+
+/* Modal de pago */
+.modal-pago {
+    display: block;
+    opacity: 0.8;
+    transform: translateY(100%);
+    transition: 0.5s ease-out;
+
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    background: rgb(152, 136, 109);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.modal-pago.activo {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.banner-titulo {
+    background-color: #daa85d;
+    margin: -30px -30px 0 -30px;
+    padding: 25px;
+    border-radius: 10px;
+    border: 3px #000000;
+}
+
+.modal-pago h3 {
+    color: #000000;
+
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
+    font-size: 1.6rem;
+}
+
+.btn-cerrar {
+    margin-top: 20px;
+    padding: 18px 30px;
+    border-radius: 7px;
+    border: 1px rgb(22, 22, 22);
+    margin-left: 80%;
+    background-color: rgba(44, 42, 42, 0.16);
+}
+
+label {
+    display: flex;
+    margin-top: 35px;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300px;
+    font-style: normal;
+    font-size: 1.4rem;
+}
+
+#form-pago input {
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}
+
+span.subrayado-label {
+    text-decoration: underline 2px rgba(0, 0, 0, 0.938);
+    text-underline-offset: 5px;
+}
+
+.btn-confirmar {
+    padding: 15px 25px;
+    margin-top: 20px;
+    background-color: #7e7e7e;
+    color: #000000d2;
+    font-size: 20px;
+    border: 1px rgba(255, 255, 255, 0.16);
+}
+
+.recuadro-pago {
+    border: 1px solid #3b3b3b;
+    border-radius: 8px;
+    padding: 10px 30px 30px 30px ;
+    margin-top: 25px;
+}
+
+.recuadro-total hr {
+    border-color: rgba(143, 143, 143, 0.35);
+}
+
+/* Sección de contactos */
+#form-bandeja {
+    display: block;
+    align-content: center;
+    border: 1px rgba(0, 0, 0, 0.35);
+    border-radius: 4px;
+    padding: 7px;
+}
+
+#form-bandeja textarea,
+#form-bandeja input {
+    width: 365px;
+    margin-top: 5px;
+    color: #000000;
+    background-color: #a1a1a1;
+    border: 1px rgba(55, 55, 55, 0.16);
+    margin-bottom: 8px;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 20px;
+    padding: 15px;
+
+    font-family: "Unlock", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #000000;
+
+    box-shadow: 1px 5px 45px rgba(0, 0, 0, 0.35);
+}
+
+input {
+    height: 50px;
+}
+
+.bandeja-email label {
+    margin-bottom: 10px;
+    color: #ffffff;
+
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+}
+
+.bandeja-email button {
+    padding: 15px 25px;
+    border-radius: 6px;
+    border: 1px rgba(21, 21, 21, 0.701);
+    background-color: #878686;
+    margin-bottom: 75px;
+
+    font-family: "Unlock", serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #202020;
+}
+
+.form-correo span {
+    text-underline-offset: 7px;
+    text-decoration: underline 1px #ffffffb6;
+}
+
+.redes-sociales span {
+    font-size: 30px;
+    text-decoration: underline 2px #b1b1b1;
+    text-underline-offset: 10px;
+}
+
+.redes {
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+    justify-content: flex-start;
+    margin-right: 200px;
+}
+
+.redes img {
+    max-width: 100%;
+}
+
+/* Créditos */
+.derechos-creditos p {
+    font-size: 15px;
+    margin-top: 60px;
+    font-family: "Unlock", serif;
+    font-weight: 200;
+    font-style: normal;
+    color: #c6c6c6;
+    background-color: 3px 4px rgba(0, 0, 0, 0.35);
+    padding: 10px;
+    background: linear-gradient(to right, transparent, #1f1f1fbe, transparent);
+}
+
+.banner-creditos {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #8f8f8fbe, transparent);
+  width: 100%;
+  margin: 20px 20px 20px auto;
+  margin-top: 30px;
+}
+

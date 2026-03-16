@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cafetería con café de especialidad y pastelería artesanal." />
+  <title>Cafetería (menú)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+  <header class="site-header">   
+<!-- Botón del menú -->
+    <section class="menu">
+      <button class="btn-hamburguesa" type="button" aria-label="abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>      
+      <nav id="nav-principal" class="site-nav">
+        <a href="menu.html">Menú</a>
+        <a href="combosdesayuno.html"><span class="a-combos">Combo/desayuno</span></a>
+        <a href="combosmerienda.html"><span class="a-combos">Combo/merienda</span></a>
+        <div class="barra-contacto">
+          <a href="contacto.html">Contacto <img src="images/loguitocontacto.png" class="logo-contacto" alt=""></a>
+        </div>
+        <div class="logo-menu">
+          <img src="images/logomenu.png" alt="Logo de café para el menú">
+        </div>
+      </nav>
+    </section>  
+<!-- Cabecera de la web -->     
+    <section class="cabecera-web">
+      <img src="images/Logos Cafetería de Especialidad Delicado Negro (1).png" alt="Logo de la cafetería" class="logo">
+      <h1>¡Contactanos y siguenos!</h1>
+    </section>   
+  </header>
+
+<!-- Aquí se contacta -->
+  <main>
+    <section class="bandeja-email">
+      <div class="form-correo">
+        <form id="form-bandeja" action="https://formsubmit.co/pruebacorreomidi12@gmail.com" method="POST">
+        <label for="nombre">N<span class="subrayado-label">ombr</span>e</label>
+        <input type="text" name="nombre" placeholder="Tu nombre completo" required />
+        <label for="email">E<span class="subrayado-label">mai</span>l</label>
+        <input type="email" name="email" placeholder="Tu correo" required />
+        <label for="Escribe">E<span class="subrayado-label">scrib</span>e</label>
+        <textarea name="mensaje" placeholder="Escribe tu mensaje" rows="8" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      </div>
+    </section>
+
+    <section class="redes-sociales">
+      <h2>N<span>uestras rede</span>s</h2>
+      <div class="redes">
+        <a href="https://facebook.com//Lionel Florentin" target="_blank" rel="noopener noreferrer" class="icono-red">
+          <img src="images/facebookicono.png" alt="Icono de Facebook">
+        </a> 
+        <a href="https://instagram.com//usuarioprueba" target="_blank" rel="noopener noreferrer" class="icono-red">
+          <img src="images/igicono.png" alt="Icono de Instagram">
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="derechos-creditos">
+      <p>&copy; Desarrollado por Lionel Florentín</p>
+    </div>
+  </footer>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>

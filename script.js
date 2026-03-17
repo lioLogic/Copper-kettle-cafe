@@ -115,7 +115,7 @@ pedido.addEventListener("submit", (e) => {
     return fetch("/api/crear-preferencia", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             items: items,

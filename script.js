@@ -89,7 +89,9 @@ cards.forEach((card => {
 
 // JS y API
 const pedido = document.getElementById("form-pago");
-pedido.addEventListener("submit", (e) => {
+
+if (pedido) {
+    pedido.addEventListener("submit", (e) => {
     e.preventDefault()
 // Validamos el contenido del formulario
     const nombre = pedido.nombre.value.trim();
@@ -136,7 +138,10 @@ pedido.addEventListener("submit", (e) => {
       console.log(error);
       alert("hubo un error, intenta de nuevo.");
     });
-});
+   });
+
+}
+
 // Formulario de contacto //
 const bandeja = document.getElementById("serviciosForm");
 

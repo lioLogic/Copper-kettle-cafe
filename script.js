@@ -116,7 +116,7 @@ pedido.addEventListener("submit", (e) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer TEST-APP_USR-583756990100420-031208-d69de8e4a45e6dc08a239304c9fbb038-3260786029"
+            "Authorization": "Bearer TEST-tu-token"
         },
         body: JSON.stringify({
             items: items,
@@ -133,13 +133,9 @@ pedido.addEventListener("submit", (e) => {
         window.location.href = data.init_point
         limpiarFormulario();
     })
-    
-    .then(() => {
-    bandeja.reset();
-    alert("¡Mensaje enviado!");
-    })
-  .catch(() => {
-    alert("hubo un error, intenta de nuevo.");
+    .catch(error => {
+      console.log(error);
+      alert("hubo un error, intenta de nuevo.");
     });
 });
 // Formulario de contacto //
@@ -153,7 +149,7 @@ bandeja.addEventListener("submit", (e) => {
 
     if (!nombre || !email || !mensaje) return;
 
-    const serviciosForm = new FormData("serviciosForm");
+    const formData = new FormData(bandeja);
 
     fetch("/", {
     method: "POST",
@@ -168,7 +164,7 @@ bandeja.addEventListener("submit", (e) => {
   .catch(() => {
     alert("hubo un error, intenta de nuevo.");
     });
-});
+});    
 
 
 

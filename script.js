@@ -134,6 +134,35 @@ pedido.addEventListener("submit", (e) => {
         limpiarFormulario();
     })   
 })
+// Formulario de contacto //
+const bandeja = document.getElementById("serviciosForm");
+
+bandeja.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nombre = bandeja.nombre.value.trim();
+    const email = bandeja.email.value.trim();
+    const mensaje = bandeja.mensaje.value.trim();
+
+    if (!nombre || !email || !mensaje) return;
+
+    const serviciosForm = new FormData("serviciosForm");
+
+    fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams(formData).toString()
+    })
+  .then(() => {
+    serviciosForm.reset();
+    alert("¡Mensaje enviado!");
+    })
+  .catch(() => {
+    alert("hubo un error, intenta de nuevo.");
+    });
+});
+
 
 
 

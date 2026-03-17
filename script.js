@@ -112,7 +112,7 @@ pedido.addEventListener("submit", (e) => {
         })
     })
 // Flujo de fetch
-    return fetch("/.netlify/functions/crear-preferencia", {
+    return fetch("/api/crear-preferencia", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

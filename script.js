@@ -112,7 +112,7 @@ pedido.addEventListener("submit", (e) => {
         })
     })
 // Flujo de fetch
-    return fetch("https://api.mercadopago.com/checkout/preferences", {
+    return fetch("/.netlify/functions/crear-preferencia", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

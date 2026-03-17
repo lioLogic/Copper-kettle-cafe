@@ -116,6 +116,32 @@
       <hr>  
       <p>T<span class="total-subrayado">ota</span>l: $<span id="total">0</span></p>
     </section>
+
+<!-- Botón para pagar -->
+    <button type="button" class="btn-pagar" disabled>Pagar</button>
+<!-- Formulario para pagar -->
+      <div class="modal-pago">
+        <div class="banner-titulo">
+          <h3>Casi listo! Solo necesitamos algunos datos</h3>
+        </div>
+        <article class="recuadro-pago">
+          <div class="formulario-pago">
+          <button type="button" class="btn-cerrar">X</button>
+          <form id="form-pago">
+            <label for="nombre">N<span class="subrayado-label">ombr</span>e</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+            <label for="email">E<span class="subrayado-label">mai</span>l</label>
+            <input type="email" id="email" name="email" placeholder="Tu email" required />
+
+            <label for="telefono">t<span class="subrayado-label">elefon</span>o</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Tu télefono" required />
+
+            <button type="submit" class="btn-confirmar">Enviar</button>
+          </form>
+        </div>
+        </article>
+      </div>
   </main>
 
   <footer class="site-footer">

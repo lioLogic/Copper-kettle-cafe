@@ -132,11 +132,18 @@ pedido.addEventListener("submit", (e) => {
     .then(data =>{
         window.location.href = data.init_point
         limpiarFormulario();
-    })   
-})
+    })
+    
+    .then(() => {
+    bandeja.reset();
+    alert("¡Mensaje enviado!");
+    })
+  .catch(() => {
+    alert("hubo un error, intenta de nuevo.");
+    });
+});
 // Formulario de contacto //
 const bandeja = document.getElementById("serviciosForm");
-
 bandeja.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -155,7 +162,7 @@ bandeja.addEventListener("submit", (e) => {
     body: new URLSearchParams(formData).toString()
     })
   .then(() => {
-    serviciosForm.reset();
+    bandeja.reset();
     alert("¡Mensaje enviado!");
     })
   .catch(() => {

@@ -49,6 +49,7 @@ body.menu-abierto .cabecera-web {
     filter: blur(4px);
     pointer-events: none;
     user-select: none;
+    overflow: hidden;
 }
 
 .page {
@@ -106,7 +107,7 @@ h3 {
   font-size: 2.5rem;
   cursor: pointer;
   margin-top: 20px;
-  color: #8f6303;
+  color: #73674f;
   border: 1px solid #ffffff4e;
   height: 60px;
   width: 60px;

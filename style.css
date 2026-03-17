@@ -499,8 +499,8 @@ span.subrayado-label {
     padding: 7px;
 }
 
-#form-bandeja textarea,
-#form-bandeja input {
+#serviciosForm textarea, 
+#serviciosForm input {
     width: 365px;
     margin-top: 5px;
     color: #000000;

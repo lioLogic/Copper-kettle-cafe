@@ -116,7 +116,6 @@ pedido.addEventListener("submit", (e) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer TEST-tu-token"
         },
         body: JSON.stringify({
             items: items,

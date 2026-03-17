@@ -139,7 +139,9 @@ pedido.addEventListener("submit", (e) => {
 });
 // Formulario de contacto //
 const bandeja = document.getElementById("serviciosForm");
-bandeja.addEventListener("submit", (e) => {
+
+if (bandeja) {
+    bandeja.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const nombre = bandeja.nombre.value.trim();
@@ -163,7 +165,9 @@ bandeja.addEventListener("submit", (e) => {
   .catch(() => {
     alert("hubo un error, intenta de nuevo.");
     });
-});    
+ });    
+}
+
 
 
 

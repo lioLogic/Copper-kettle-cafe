@@ -112,7 +112,7 @@ pedido.addEventListener("submit", (e) => {
         })
     })
 // Flujo de fetch
-    return fetch("/api/crear-preferencia", {
+    return fetch("/api/crear-preferencias", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

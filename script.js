@@ -89,6 +89,10 @@ cards.forEach((card => {
 
 // JS y API
 const pedido = document.getElementById("form-pago");
+function limpiarFormulario() {
+    const pedidoForm = document.getElementById("form-pago");
+    if (pedidoForm) pedidoForm.reset();
+}
 
 if (pedido) {
     pedido.addEventListener("submit", (e) => {

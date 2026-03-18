@@ -132,9 +132,11 @@ if (pedido) {
             }
         })
     })
-    .then(response =>
-        response.json())
-    .then(data =>{
+    .then(response => {
+        console.log("status:", response.status);
+        return response.json();
+    })
+    .then(data => {
         console.log("respuesta completa:", data); 
         console.log(data);
         window.location.href = data.init_point

@@ -128,7 +128,10 @@ if (pedido) {
             payer: {
                 name: nombre,
                 email: email,
-                phone: telefono
+                phone: {
+                    area_code: "54",
+                    number: telefono
+                }
             }
         })
     })

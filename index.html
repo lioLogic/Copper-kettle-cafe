@@ -11,13 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="page">
-  <header class="site-header">   
+  <div class="overlay-menu"></div>
 <!-- Botón del menú -->
     <section class="menu">
       <button class="btn-hamburguesa" type="button" aria-label="abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>      
       <nav id="nav-principal" class="site-nav">
-        <a href="index.html">Menú</a>
+        <a href="index.html" class="a-menu">Menú</a>
         <a href="combosdesayuno.html"><span class="a-combos">Combo/desayuno</span></a>
         <a href="combosmerienda.html"><span class="a-combos">Combo/merienda</span></a>
         <div class="barra-contacto">
@@ -28,6 +27,8 @@
         </div>
       </nav>
     </section>  
+  <div class="page">
+  <header class="site-header">   
 <!-- Cabecera de la web -->     
     <section class="cabecera-web">
       <img src="images/Logos Cafetería de Especialidad Delicado Negro (1).png" alt="Logo de la cafetería" class="logo">
@@ -35,21 +36,25 @@
       <p>Café de especialidad y pastelería<br>artesanal</p>
     </section>   
   </header>
-
 <!-- Presentación de la web -->  
+ <hr class="separador-desktop">
+ 
   <main>
     <section class="Presentacion">
-      <article class="presentacion">
+      <article class="presentacion-card">
         <h2>Bie<span class="subrayado">nveni</span>dos</h2>
         <p>Un espacio para disfrutar buen café, buena música y buena compañía.</p>
       </article>
     </section>
-<!-- Columna para comprar los cafés -->    
+<!-- Columna para comprar los cafés -->   
     <section class="pedidos-cafe">
       <article class="titulo-eligecafes">
         <h2>Elige tu café</h2>
-      </article>
-      <article class="card cafe-americano" data-prod="americano" data-price="5">
+      </article> 
+    <div class="contenedor-scroll">
+      <!-- Columna de productos con scroll -->      
+      <div class="columna-scroll">
+        <article class="card cafe-americano" data-prod="americano" data-price="5">
         <h3>Ca<span class="cafes">fé America</span>no</h3>
         <img src="images/americano.jpg" alt="Café americano">  
           <div class="cantidad-control">
@@ -62,7 +67,7 @@
             </div>
             </div>         
           </div>
-      </article>
+        </article>
         <article class="card cafe-leche" data-prod="cafeleche" data-price="8">
           <h3>Ca<span class="cafes">fé con lec</span>he</h3>
           <img src="images/cafeconleche.jpg" alt="Café con leche">
@@ -131,11 +136,19 @@
             </div>
           </div>
           </div>
-        </article> 
+        </article>
+      </div>
+    </div>
     </section>
-
+  </main>
 <!-- Monto total de la compra (recuadaro) -->
     <section class="recuadro-total">
+      <div class="cancelar-resumen">
+        <button type="button" id="btn-reset">
+          <span class="aviso-carrito">Cancelar resumen</span>
+          <span class="icono">🗑️</span>
+        </button>
+      </div>
       <h3>Resumen de la compra</h3>
       <hr>
       <p class="item-resumen" data-prod="americano" data-price="5">Americano: $<span class="sub">0</span></p>
@@ -154,6 +167,7 @@
     </section>
 <!-- Botón para pagar -->
     <button type="button" class="btn-pagar" disabled>Pagar</button>
+
 <!-- Formulario para pagar -->
       <div class="modal-pago">
         <div class="banner-titulo">

@@ -11,13 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="page">
-  <header class="site-header">   
-<!-- Botón del menú -->
+  <div class="overlay-menu"></div>
+  <!-- Botón del menú -->
     <section class="menu">
       <button class="btn-hamburguesa" type="button" aria-label="abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>      
       <nav id="nav-principal" class="site-nav">
-        <a href="index.html">Menú</a>
+        <a href="index.html" class="a-menu">Menú</a>
         <a href="combosdesayuno.html"><span class="a-combos">Combo/desayuno</span></a>
         <a href="combosmerienda.html"><span class="a-combos">Combo/merienda</span></a>
         <div class="barra-contacto">
@@ -27,13 +26,17 @@
           <img src="images/logomenu.png" alt="Logo de café para el menú">
         </div>
       </nav>
-    </section>  
+    </section>
+  <div class="page">
+  <header class="site-header">     
 <!-- Cabecera de la web -->     
     <section class="cabecera-web">
       <img src="images/Logos Cafetería de Especialidad Delicado Negro (1).png" alt="Logo de la cafetería" class="logo">
       <h1>Combos para la Merienda</h1>
     </section>   
   </header>
+<!-- Presentación de la web -->  
+  <hr class="separador-desktop">
 
   <main>
 <!-- Columna para comprar los cafés -->    
@@ -41,6 +44,9 @@
       <article class="titulo-eligecafes">
         <h2>Elige tu combo</h2>
       </article>
+      <div class="contenedor-scroll">
+<!-- Columna de productos con scroll -->
+      <div class="columna-scroll">
       <article class="card cafe-americano" data-prod="americano" data-price="5">
         <h3>Café americano y Cr<span class="cafes">oissant de mante</span>ca</h3>
         <img src="images/combo1.jpg" alt="Café americano">  
@@ -96,10 +102,19 @@
           </div>
           </div>
         </article>
+        </div>
+      </div>
     </section>
+    </main>
 
 <!-- Monto total de la compra (recuadaro) -->
     <section class="recuadro-total">
+       <div class="cancelar-resumen">
+        <button type="button" id="btn-reset">
+          <span class="aviso-carrito">Cancelar resumen</span>
+          <span class="icono">🗑️</span>
+        </button>
+      </div>
       <h3>Resumen de la compra</h3>
       <hr>
       <p class="item-resumen" data-prod="americano" data-price="5">Americano: $<span class="sub">0</span></p>

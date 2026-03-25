@@ -4,16 +4,36 @@ const nav = document.querySelector(".site-nav");
 const btnPagar = document.querySelector(".btn-pagar");
 const modal = document.querySelector(".modal-pago");
 const btnCerrar = document.querySelector(".btn-cerrar");
+const reset = document.getElementById("btn-reset");
+
+if (reset) {
+    reset.addEventListener("click", function () {
+        document.querySelectorAll(".cantidad-numero").forEach(cant => {
+            cant.textContent = "0";
+    });
+        document.querySelectorAll(".sub").forEach(subs => {
+            subs.textContent = "0";
+    });
+        document.getElementById("total").textContent = "0";
+        document.querySelectorAll(".item-resumen").forEach(item => {
+            item.classList.remove("activo");
+    });
+    btnPagar.disabled = true;
+  });
+}
+
 
 if (btnPagar && modal) {
     btnPagar.addEventListener("click", () => {
         modal.classList.add("activo");
+        document.body.classList.add("modal-activo");
     });
 }
 
 if (btnCerrar && modal) {
     btnCerrar.addEventListener("click", () => {
         modal.classList.remove("activo");
+        document.body.classList.remove("modal-activo");
         limpiarFormulario();
     });
 }
@@ -21,9 +41,13 @@ if (btnCerrar && modal) {
 if (btn && nav) {
     btn.addEventListener('click', function () {
         const abierto = nav.classList.toggle("abierto");
-        document.body.classList.toggle("menu-abierto");
+        document.body.classList.toggle("menu-abierto", abierto);
         btn.setAttribute("aria-expanded", String(abierto));
         btn.setAttribute("aria-label", abierto ? "Cerrar menu de navegacion" : "Abrir menu de navegacion");
+
+        if (abierto) {
+            btn.classList.remove("scrolleando");
+        }
     });
 }
 
@@ -150,7 +174,6 @@ if (pedido) {
       alert("hubo un error, intenta de nuevo.");
     });
    });
-
 }
 
 // Formulario de contacto //
@@ -184,9 +207,13 @@ if (bandeja) {
  });    
 }
 
+window.addEventListener('scroll', () => {
+    if (document.body.classList.contains('menu-abierto')) return;
+    const btn1 = document.querySelector('.btn-hamburguesa');
 
-
-
-
-
-
+     if (window.scrollY > 100) {
+        btn?.classList.add('scrolleando');
+    } else {
+        btn?.classList.remove('scrolleando');
+    }
+});

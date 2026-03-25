@@ -15,7 +15,7 @@ body {
 body {
   margin: 0;
   min-height: 100vh;
-  background-image: url("images/fondodelaweb.jpg");
+  background-image: url("images/view-coffee-machine-making-coffee-home.jpg");
   background-size: cover;         
   background-position: center;    
   background-repeat: no-repeat;   
@@ -26,7 +26,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("images/beans-coffee-black-ice-cream-cones-with-copy-space.jpg") center / cover no-repeat;
+  background: url("images/view-coffee-machine-making-coffee-home.jpg") center / cover no-repeat;
   filter: blur(4px);
   transform: scale(1.06); /* evita bordes vacíos por el blur */
   z-index: -2;
@@ -43,21 +43,43 @@ body::after {
 * { box-sizing: border-box; }
 
 /* Cuando menu esta abierto, desenfoca el resto */
-body.menu-abierto main,
-body.menu-abierto footer,
-body.menu-abierto .cabecera-web {
-    filter: blur(4px);
+body.menu-abierto,
+body.modal-activo {
+    overflow: hidden;
+}
+html:has(body.menu-abierto),
+html:has(body.modal-activo) {
+    overflow: hidden;
+}
+body.menu-abierto .page,
+body.modal-activo .page {
     pointer-events: none;
     user-select: none;
+    
 }
-
-body.menu-abierto {
-  overflow: hidden;
+body.menu-abierto .site-nav,
+body.menu-abierto .btn-hamburguesa {
+    pointer-events: all;
+}
+body.modal-activo .modal-pago {
+    pointer-events: all;
 }
 
 .page {
   width: min(100% - 2rem, 70rem);
   margin-inline: auto;
+}
+
+.overlay-menu {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.724);
+    z-index: 100;
+    display: none;
+}
+body.menu-abierto .overlay-menu {
+    display: block;
 }
 
 /* Base general */
@@ -105,16 +127,42 @@ h3 {
 }
 
 .btn-hamburguesa {
-  background: none;
-  border: 0;
-  font-size: 2.5rem;
-  cursor: pointer;
-  margin-top: 20px;
-  color: #73674f;
-  border: 1px solid #ffffff4e; 
-  height: 60px;
-  width: 60px;
-  border-radius: 10px;
+    background: none;
+    border: 0;
+    font-size: 2.5rem;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #bfbfbf;
+    border: 1px solid #202020;;
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    z-index: 120;
+    margin-top: -10px;
+    position: fixed;
+    left: 1rem;
+    top: 2.2rem;
+}
+.btn-hamburguesa::before {
+    display: block;
+    position: fixed;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.514);
+    height: 110px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: translateZ(-100%);
+    opacity: 0;
+    transition: 1s;
+    pointer-events: none;
+}
+.btn-hamburguesa.scrolleando::before {
+    opacity: 1;
+    transform: translateZ(0);
+    background: linear-gradient(to bottom, #1b1a1af0 90%, transparent);
+    border-color: #fff;
 }
 
 .btn-hamburguesa:focus-visible,
@@ -126,25 +174,23 @@ h3 {
 
 .site-nav {
     display: flex;
-    position: absolute; 
-    top: 120%;
+    position: fixed; 
+    top: 0;
     left: 0;
-    right: 0;
-    background: #fff;
+    background: linear-gradient(to bottom, #4a3e33ab 60%, transparent);
 /* decoración del recuadro */
-    border: 1px solid #00000042;
+    border: 1px solid #4e3b26a6;
     box-shadow: 2px 6px 12px rgba(45, 44, 44, 0.842);
     padding: 8px 6px 6px;
     flex-direction: column;
     gap: 0.75rem;
-    background-color: #2b2b2b;
-    border-radius: 3px;
+    background-color: #3e3530;
     width: 380px;
-    height: 550px;
+    height: 100vh;
 /* Estado inicial del nav */
     opacity: 0;
-    transform: translateX(-200%);
-    transition: 400ms ease-out;
+    transform: translateX(-100%);
+    transition: 150ms;
 }
 
 .site-nav.abierto {
@@ -156,6 +202,9 @@ h3 {
 }
 
 /* Modificaciones individuales de los <a> */
+.a-menu {
+    margin-top: 100px;
+}
 .barra-contacto a {
     display: flex;
     flex-direction: row;
@@ -176,17 +225,36 @@ h3 {
     display: flex;
     align-items: center;
     margin-top: 20px;
-   
+    box-shadow: 15px 10px 25px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 100%;
+    padding: 0;
 }
 
+.site-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
+    color: #fff;
+    font-size: 25px;
+
+    border: 1px solid #202020d2;
+    border-radius: 3px;
+    text-align: left;
+    padding: 8px;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+}
 /* Cabecera de la web */
 .logo {
     width: 180px;
     display: block;
     margin: 0 auto;      
     position: relative;
-    top: -40px;          
-    left: 0;      
+    margin-top: 30px;          
+    left: 0;
+    z-index: 2;      
 }
 
 .cabecera-web h1 {
@@ -210,14 +278,15 @@ h3 {
 }
 
 /* Presentación de la web */
-article.presentacion {
+article.presentacion-card {
     border: 1px #000000a7 solid;
+    background-color: rgba(45, 45, 45, 0.128);
     border-radius: 8px;
     padding: 35px;
     box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.35);
 }
 
-article.presentacion h2, p {
+article.presentacion-card h2, p {
     text-align: center;
     font-size: 1.5rem;
 }
@@ -237,10 +306,15 @@ article.presentacion h2, p {
     text-underline-offset: 13px;
 }
 
+.separador-desktop {
+    display: none;
+}
+
 /* Columna para comprar los cafés */
 article.titulo-eligecafes h2 {
     text-align: center;
     border: 1px #000000 solid;
+    background-color: rgba(0, 0, 0, 0.365);
     padding: 6px;
     margin-bottom: 80px;
     box-shadow: 1px 1px 18px rgba(0, 0, 0, 0.35);
@@ -252,9 +326,9 @@ article.titulo-eligecafes h2 {
 }
 
 article.card {
-    background: rgba(45, 44, 44, 0.842);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(to bottom, #5b473d 90%, transparent);
+    box-shadow: 0 10px 24px rgba(121, 70, 36, 0.637);
+    border: 1px solid rgba(0, 0, 0, 0.411);
     backdrop-filter: blur(3px);
     margin-bottom: 50px;
     padding: 20px;
@@ -262,7 +336,7 @@ article.card {
 }
 
 .card-cantidad {
-    border: 1px #5b5b5b solid;
+    border: 1px #0606069b solid;
     border-radius: 6px;
     margin-top: 25px;
     align-items: center;
@@ -275,10 +349,10 @@ button.restar {
     width: 35px;
     height: 35px;
     border-radius: 7px;
-    border: 1px solid rgba(45, 44, 44, 0.644);
+    border: 1px solid rgba(0, 0, 0, 0.644);
 
     font-size: 28px;
-    color: #3b3b3b;
+    color: #202020;
 }
 
 .botones {
@@ -319,46 +393,16 @@ article.card h3 {
     font-style: normal;
     color: #fff;
 }
-/* Tipografía para nav-a */
-.site-nav a {
-    text-decoration: none;
-    color: inherit;
-    font-family: "Bodoni Moda", serif;
-    font-optical-sizing: auto;
-    font-weight: 100px;
-    font-style: normal;
-    color: #fff;
-    font-size: 25px;
-
-    border: 1px solid #202020d2;
-    border-radius: 3px;
-    text-align: left;
-    padding: 8px;
-}
-
-/* Contactarse por email */
-.form-email h2 {
-    font-size: 23px;
-    color: #fff;
-    margin-top: 45px;
-}
-
-.form-email a {
-    text-decoration: none;
-    color: inherit;
-    color: #c3c3c3bf;
-}
 
 /* Recuadro para el monto total de la compra */
 .recuadro-total {
-    border: 1px solid #ffffff33;
+    border: 1px solid #8d5d2c33;
     border-radius: 10px;
     padding: 12px 16px;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(34, 34, 33, 0.726);
     color: #fff;
     font-size: 1.1rem;
 }
-
 
 .recuadro-total h3 {
     font-size: 15px;
@@ -382,6 +426,40 @@ article.card h3 {
     text-underline-offset: 6px;
 }
 
+/* Boton de reset resumen */
+.cancelar-resumen {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#btn-reset {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+#btn-reset span {
+    display: inline-block;
+}
+
+.aviso-carrito {
+    font-size: 0.8rem;
+    line-height: 1;
+
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #7f7f7f71;
+}
 /* Botón para pagar */
 .btn-pagar {
     display: block;
@@ -389,7 +467,7 @@ article.card h3 {
     padding: 25px 70px;
     border-radius: 8px;
     border: 1px rgba(255, 255, 255, 0.16);
-    background: rgba(21, 21, 21, 0.701);
+    background: rgba(41, 40, 40, 0.9);
     color: #fff;
 
     font-size: 1.5rem;
@@ -405,7 +483,7 @@ article.card h3 {
     display: block;
     opacity: 0.8;
     transform: translateY(100%);
-    transition: 0.5s ease-out;
+    transition: 400ms ease-out;
 
 
     position: fixed;
@@ -421,6 +499,7 @@ article.card h3 {
 .modal-pago.activo {
     opacity: 1;
     transform: translateY(0);
+    z-index: 130;
 }
 
 .banner-titulo {
@@ -597,3 +676,126 @@ input {
   margin-top: 30px;
 }
 
+/* Adaptación de pantalla para desktop */
+@media (min-width: 1024px) {
+    header {
+        position: relative;
+        margin-bottom: 20px;
+        transform: scale(0.8);                                                                                                                                                                                                                                                                                                                                                                                                                      
+    }
+    .btn-hamburguesa {
+        position: fixed;
+        left: 1rem;
+        top: 2.3rem;
+        z-index: 120;
+    }
+    .site-nav {
+        z-index: 110;
+    }
+
+    .overlay-menu {
+        z-index: 105;
+    }
+    .logo {
+        max-width: 15rem;
+        width: 100%;
+        top: -6rem;
+    }
+    .cabecera-web h1 {
+        font-size: 3.5rem;
+        top: -8rem;
+    }
+    .cabecera-web p {
+        font-size: 1.5rem;
+        top: -7rem;
+    }
+    /* Layout principal */
+    main {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        width: 100%;
+        transform: scale(0.9);
+    }
+    section.Presentacion {
+        flex: 1;
+    }
+    /* Columna de cafés a la derecha con scroll */
+    .presentacion-card {
+        margin-top: 1rem;
+    }
+    .columna-scroll {
+        width: 450px;
+        height: 120vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: sticky;
+        margin-top: -6rem;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #1f1e1c42;
+        transform: scale(0.8);
+        border: 2px solid rgba(0, 0, 0, 0.76);
+        border-radius: 15px;
+
+        box-shadow: 1px 2px 18px 8px rgba(0, 0, 0, 0.2);
+    }
+    .separador-desktop {
+        display: block;
+        width: 100vw;
+        height: 1px;
+        border: none;
+        background: rgba(36, 30, 30, 0.2);
+        border-radius: 10px;
+        
+        margin: 0;
+        padding: 6px;
+        margin-left: calc(-50vw + 50%); 
+    }
+    .recuadro-total {
+        transform: scale(0.9);
+    }
+    .btn-pagar {
+        transform: scale(0.7);
+    }
+/* Poporciones de sección de contactos */
+    .parrafo-contacto p {
+        font-size: 2rem;
+    }
+    .bandeja-email {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+    }
+    .bandeja-email input,
+    .bandeja-email textarea {
+        width: 100%;
+    }
+    .btn-contacto {
+        display: block;
+        width: fit-content;
+        margin-left: 0;
+    }
+    .redes-sociales h2, 
+    .redes-sociales span {
+        font-size: 2.5rem;
+        text-align: left;
+    }
+    .redes-sociales {
+        margin-left: 10rem;
+    }
+    .redes {
+        max-width: 18rem;
+    }
+/* Proporciones del modal de pago */
+     .modal-pago {
+        width: 500px;
+        left: 50%;
+        bottom: -5.5rem;
+        transform: translateY(100%) translateX(-50%) scale(0.8);
+    }
+
+    .modal-pago.activo {
+        transform: translateY(0) translateX(-50%) scale(0.8);
+    }
+}

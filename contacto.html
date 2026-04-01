@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cafetería con café de especialidad y pastelería artesanal." />
-  <title>Cafetería (menú)</title>
+  <title>Copper Kettle Cafe</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,21 +12,27 @@
 </head>
 <body>
   <div class="overlay-menu"></div>
-  <!-- Botón del menú -->
+<!-- Botón del menú -->
     <section class="menu">
       <button class="btn-hamburguesa" type="button" aria-label="abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>      
       <nav id="nav-principal" class="site-nav">
-        <a href="index.html" class="a-menu">Menú</a>
-        <a href="combosdesayuno.html"><span class="a-combos">Combo/desayuno</span></a>
-        <a href="combosmerienda.html"><span class="a-combos">Combo/merienda</span></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link nav--menu">Menú</a>
+        <a href="combosdesayuno.html" class="nav-link nav--combo">Combo/desayuno</a>
+        <a href="combosmerienda.html" class="nav-link nav--combo">Combo/merienda</a>
+        
         <div class="barra-contacto">
-          <a href="contacto.html">Contacto <img src="images/loguitocontacto.png" class="logo-contacto" alt=""></a>
+          <a href="contacto.html" class="nav-link nav--contacto">
+            <span class="texto">Contacto</span>
+            <img src="images/loguitocontacto.png" class="logo-contacto" alt="Icono de contacto">
+          </a>
         </div>
+      </div>  
         <div class="logo-menu">
-          <img src="images/logomenu.png" alt="Logo de café para el menú">
+          <img src="images/logomenu.png" class="logo-nav" alt="Logo de café para el menú">
         </div>
       </nav>
-    </section>  
+    </section>
   <div class="page">
   <header class="site-header">   
 <!-- Cabecera de la web -->     
@@ -38,7 +44,8 @@
       </div>
     </section>   
   </header>
-<!-- Presentación de la web -->  
+<!-- Presentación de la web -->
+
   <hr class="separador-desktop">
 
 <!-- Aquí se contacta -->
@@ -52,13 +59,16 @@
         <input type="email" name="email" placeholder="Tu correo" required />
         <label for="Escribe">E<span class="subrayado-label">scrib</span>e</label>
         <textarea name="mensaje" placeholder="Escribe tu mensaje" rows="8" required></textarea>
-        <button type="submit" class="btn-contacto">Enviar</button>
+        <div class="btn-correo">
+          <button type="submit" class="btn-contacto">Enviar</button>
+        </div>
       </form>
       </div>
     </section>
-
     <section class="redes-sociales">
-      <h2>N<span>uestras rede</span>s</h2>
+      <div class="titulo-contactos">
+        <h2>N<span class="subrayado-contacto">uestras rede</span>s</h2>
+      </div>
       <div class="redes">
         <a href="https://facebook.com//Lionel Florentin" target="_blank" rel="noopener noreferrer" class="icono-red">
           <img src="images/facebookicono.png" alt="Icono de Facebook">

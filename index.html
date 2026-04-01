@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cafetería con café de especialidad y pastelería artesanal." />
-  <title>Cafetería (menú)</title>
+  <title>Copper Kettle Cafe</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,29 +16,34 @@
     <section class="menu">
       <button class="btn-hamburguesa" type="button" aria-label="abrir menú" aria-expanded="false" aria-controls="nav-principal">☰</button>      
       <nav id="nav-principal" class="site-nav">
-        <a href="index.html" class="a-menu">Menú</a>
-        <a href="combosdesayuno.html"><span class="a-combos">Combo/desayuno</span></a>
-        <a href="combosmerienda.html"><span class="a-combos">Combo/merienda</span></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link nav--menu">Menú</a>
+        <a href="combosdesayuno.html" class="nav-link nav--combo">Combo/desayuno</a>
+        <a href="combosmerienda.html" class="nav-link nav--combo">Combo/merienda</a>
+        
         <div class="barra-contacto">
-          <a href="contacto.html">Contacto <img src="images/loguitocontacto.png" class="logo-contacto" alt=""></a>
+          <a href="contacto.html" class="nav-link nav--contacto">
+            <span class="texto">Contacto</span>
+            <img src="images/loguitocontacto.png" class="logo-contacto" alt="Icono de contacto">
+          </a>
         </div>
+      </div>  
         <div class="logo-menu">
-          <img src="images/logomenu.png" alt="Logo de café para el menú">
+          <img src="images/logomenu.png" class="logo-nav" alt="Logo de café para el menú">
         </div>
       </nav>
     </section>  
   <div class="page">
   <header class="site-header">   
 <!-- Cabecera de la web -->     
-    <section class="cabecera-web">
+    <div class="cabecera-web">
       <img src="images/Logos Cafetería de Especialidad Delicado Negro (1).png" alt="Logo de la cafetería" class="logo">
-      <h1><span class="rayitas">- </span>Copper Kettle Cafe<span class="rayitas"> -</span></h1>
-      <p>Café de especialidad y pastelería<br>artesanal</p>
-    </section>   
+      <h1>Copper Kettle Cafe</h1>
+      <p>Café de especialidad<br>y pastelería<br>artesanal</p>
+    </div>   
   </header>
 <!-- Presentación de la web -->  
  <hr class="separador-desktop">
- 
   <main>
     <section class="Presentacion">
       <article class="presentacion-card">
@@ -140,16 +145,15 @@
       </div>
     </div>
     </section>
-  </main>
 <!-- Monto total de la compra (recuadaro) -->
     <section class="recuadro-total">
-      <div class="cancelar-resumen">
+       <div class="cancelar-resumen">
         <button type="button" id="btn-reset">
-          <span class="aviso-carrito">Cancelar resumen</span>
           <span class="icono">🗑️</span>
         </button>
       </div>
-      <h3>Resumen de la compra</h3>
+      <div class="resumen-compra">
+      <h3 class="title-banner">Resumen de la compra</h3>
       <hr>
       <p class="item-resumen" data-prod="americano" data-price="5">Americano: $<span class="sub">0</span></p>
       <hr>
@@ -163,34 +167,14 @@
       <hr>
       <p class="item-resumen" data-prod="frappe" data-price="14">Frappé: $<span class="sub">0</span></p>
       <hr>  
-      <p>T<span class="total-subrayado">ota</span>l: $<span id="total">0</span></p>
-    </section>
-<!-- Botón para pagar -->
-    <button type="button" class="btn-pagar" disabled>Pagar</button>
-
-<!-- Formulario para pagar -->
-      <div class="modal-pago">
-        <div class="banner-titulo">
-          <h3>Casi listo! Solo necesitamos algunos datos</h3>
-        </div>
-        <article class="recuadro-pago">
-          <div class="formulario-pago">
-          <button type="button" class="btn-cerrar">X</button>
-          <form id="form-pago">
-            <label for="nombre">N<span class="subrayado-label">ombr</span>e</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-
-            <label for="email">E<span class="subrayado-label">mai</span>l</label>
-            <input type="email" id="email" name="email" placeholder="Tu email" required />
-
-            <label for="telefono">t<span class="subrayado-label">elefon</span>o</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Tu télefono" required />
-
-            <button type="submit" class="btn-confirmar">Enviar</button>
-          </form>
-        </div>
-        </article>
+      <p class="title-total">T<span class="total-subrayado">ota</span>l: $<span id="total">0</span></p>
       </div>
+    </section>   
+<!-- Botón para pagar -->
+    <div class="boton-pagar">
+      <button type="button" class="btn-pagar" disabled>Pagar</button>
+    </div>
+</main>
       
 <hr class="banner-creditos">
 
@@ -200,6 +184,34 @@
     </div>
   </footer>
   </div>
+<!-- Formulario para pagar -->
+      <section class="modal-pago">
+        <div class="modal-banner">
+          <h3>Casi listo! Solo necesitamos algunos datos para realizar la compra</h3>
+        </div>
+      <div class="modal-hijo">
+<!-- Acá vive lo visual -->        
+        <article class="recuadro-pago">
+          <div class="formulario-pago">
+            <div class="cerrar-modal">
+              <button type="button" class="btn-cerrar">X</button>
+            </div>
+          <form id="form-pago">
+            <label for="nombre">N<span class="subrayado-label">ombr</span>e</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+            <label for="email">E<span class="subrayado-label">mai</span>l</label>
+            <input type="email" id="email" name="email" placeholder="Tu email" required />
+
+            <label for="telefono">T<span class="subrayado-label">élefon</span>o</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Tu télefono" required />
+
+            <button type="submit" class="btn-confirmar">Enviar</button>
+          </form>
+        </div>
+        </article>
+      </div>
+      </section>
   <script src="script.js?v=2" defer></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 html,
 body {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
   overflow-x: hidden;
 }
 
@@ -65,11 +65,6 @@ body.modal-activo .modal-pago {
     pointer-events: all;
 }
 
-.page {
-  width: min(100% - 2rem, 70rem);
-  margin-inline: auto;
-}
-
 .overlay-menu {
     content: "";
     position: fixed;
@@ -115,7 +110,7 @@ h1, h2, p {
 
 h3 {
     font-family: "Unlock", serif;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
     color: #fff;
 }
@@ -127,41 +122,42 @@ h3 {
 }
 
 .btn-hamburguesa {
-    background: none;
-    border: 0;
-    font-size: 2.5rem;
-    cursor: pointer;
-    margin-top: 20px;
-    color: #bfbfbf;
-    border: 1px solid #202020;;
+/* Tamaño del botón */
     height: 60px;
     width: 60px;
+    border: 0;
     border-radius: 10px;
-    z-index: 120;
-    margin-top: -10px;
+    font-size: 2.5rem;
+    background: none;
+    cursor: pointer;
+    color: #bfbfbf;
+    border: 1px solid #202020;
+/* Posición del botón */
     position: fixed;
-    left: 1rem;
-    top: 2.2rem;
+    top: clamp(0.5rem, 4vw, 1.5rem);
+    left: clamp(0.5rem, 4vw, 1.5rem);
+    z-index: 120;
 }
 .btn-hamburguesa::before {
+/* Base del banner */
     display: block;
     position: fixed;
     content: "";
     background-color: rgba(0, 0, 0, 0.514);
-    height: 110px;
+    opacity: 0;
+/* Tamaño del banner */    
     width: 100%;
+    height: 15%;
+/* Posición del banner */
     top: 0;
     left: 0;
     z-index: -1;
-    transform: translateZ(-100%);
-    opacity: 0;
-    transition: 1s;
+    transition: opacity 1s ease;
     pointer-events: none;
 }
 .btn-hamburguesa.scrolleando::before {
     opacity: 1;
-    transform: translateZ(0);
-    background: linear-gradient(to bottom, #1b1a1af0 90%, transparent);
+    background: linear-gradient(to bottom, #1b1a1aef 90%, transparent);
     border-color: #fff;
 }
 
@@ -173,26 +169,27 @@ h3 {
 }
 
 .site-nav {
+/* Base del nav */    
     display: flex;
-    position: fixed; 
+    position: fixed;
+    flex-direction: column;
     top: 0;
     left: 0;
-    background: linear-gradient(to bottom, #4a3e33ab 60%, transparent);
-/* decoración del recuadro */
-    border: 1px solid #4e3b26a6;
-    box-shadow: 2px 6px 12px rgba(45, 44, 44, 0.842);
-    padding: 8px 6px 6px;
-    flex-direction: column;
-    gap: 0.75rem;
-    background-color: #3e3530;
-    width: 380px;
+/* Tamaño del nav */
+    width: 85%;
+    max-width: 320px;
     height: 100vh;
+    gap: 0.5rem;
+    padding: 1rem;
+    padding-top: 120px;
+/* decoración del nav completo */
+    background: linear-gradient(to top right, #604f35 70%, #131010eb);
+    box-shadow: 2px 6px 12px rgba(45, 44, 44, 0.842);
 /* Estado inicial del nav */
     opacity: 0;
     transform: translateX(-100%);
-    transition: 150ms;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
 .site-nav.abierto {
   display: flex;
   z-index: 110;
@@ -200,238 +197,283 @@ h3 {
   transform: translateX(0);
   opacity: 1;
 }
-
-/* Modificaciones individuales de los <a> */
-.a-menu {
-    margin-top: 100px;
-}
-.barra-contacto a {
+/* Preparación de contenedores nav */
+.site-nav {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
-.logo-contacto {
-    max-width: 60px;
-    margin-left: 30px;
-}
-
-.a-combos {
-    color: #baa60ec0;
-}
-
-.logo-menu img {
-    max-width: 60%;
+.nav-links {
     display: flex;
-    align-items: center;
-    margin-top: 20px;
-    box-shadow: 15px 10px 25px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 100%;
-    padding: 0;
+    flex-direction: column;
+    gap: 2rem;
 }
-
-.site-nav a {
+/* Modificaciones individuales <a> */
+.nav-link {
+    border: 1rem rgba(0, 0, 0, 0.484);
+    box-shadow: 1px 7px 20px rgba(0, 0, 0, 0.2);
+    padding: 6px;
     text-decoration: none;
     color: inherit;
-    font-family: "Bodoni Moda", serif;
-    font-optical-sizing: auto;
-    font-weight: 100px;
-    font-style: normal;
-    color: #fff;
-    font-size: 25px;
+    background-color: #52442f;
 
-    border: 1px solid #202020d2;
-    border-radius: 3px;
-    text-align: left;
-    padding: 8px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
-}
-/* Cabecera de la web */
-.logo {
-    width: 180px;
-    display: block;
-    margin: 0 auto;      
-    position: relative;
-    margin-top: 30px;          
-    left: 0;
-    z-index: 2;      
-}
-
-.cabecera-web h1 {
-    font-size: 34px;
-    text-align: center;
-    display: block;
-    margin: 0 auto;      
-    position: relative;
-    top: -40px;          
-    left: 0;             
-}
-
-.cabecera-web p {
-    font-size: 16px;
-    text-align: center;
-    display: block;
-    margin: 0 auto;      
-    position: relative;
-    top: -30px;          
-    left: 0;             
-}
-
-/* Presentación de la web */
-article.presentacion-card {
-    border: 1px #000000a7 solid;
-    background-color: rgba(45, 45, 45, 0.128);
-    border-radius: 8px;
-    padding: 35px;
-    box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.35);
-}
-
-article.presentacion-card h2, p {
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.subrayado {
-    text-decoration: underline;
-    text-underline-offset: 7px;
-}
-
-.rayitas {
-    font-size: 55px;
-    color: #ffffff;
-}
-
-.cafes {
-    text-decoration: 1px underline;
-    text-underline-offset: 13px;
-}
-
-.separador-desktop {
-    display: none;
-}
-
-/* Columna para comprar los cafés */
-article.titulo-eligecafes h2 {
-    text-align: center;
-    border: 1px #000000 solid;
-    background-color: rgba(0, 0, 0, 0.365);
-    padding: 6px;
-    margin-bottom: 80px;
-    box-shadow: 1px 1px 18px rgba(0, 0, 0, 0.35);
-}
-
-.card h3 {
-    font-size: 30px;
-    display: block;
-}
-
-article.card {
-    background: linear-gradient(to bottom, #5b473d 90%, transparent);
-    box-shadow: 0 10px 24px rgba(121, 70, 36, 0.637);
-    border: 1px solid rgba(0, 0, 0, 0.411);
-    backdrop-filter: blur(3px);
-    margin-bottom: 50px;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.card-cantidad {
-    border: 1px #0606069b solid;
-    border-radius: 6px;
-    margin-top: 25px;
-    align-items: center;
-    padding: 20px;
-}
-
-/* botones de cantidad y precio */
-button.sumar,
-button.restar {
-    width: 35px;
-    height: 35px;
-    border-radius: 7px;
-    border: 1px solid rgba(0, 0, 0, 0.644);
-
-    font-size: 28px;
-    color: #202020;
-}
-
-.botones {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    gap: 1rem;
-    margin-right: 2.5rem;
-    margin-top: -30px;
-    align-items: center;
-}
-
-/* Tipografías para las tarjetas */
-span.precio {
-    font-size: 27px;
-    color: #fff;
-
-    font-family: "Josefin Slab", serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-}
-
-span.cantidad-numero {
-    font-size: 23px;
-    color: #fff;
-
-    font-family: "Josefin Slab", serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-}
-
-article.card h3 {
-    font-family: "Bodoni Moda", serif;
-    font-optical-sizing: auto;
-    font-weight: 500px;
-    font-style: normal;
-    color: #fff;
-}
-
-/* Recuadro para el monto total de la compra */
-.recuadro-total {
-    border: 1px solid #8d5d2c33;
-    border-radius: 10px;
-    padding: 12px 16px;
-    background-color: rgba(34, 34, 33, 0.726);
-    color: #fff;
-    font-size: 1.1rem;
-}
-
-.recuadro-total h3 {
-    font-size: 15px;
     font-family: "Bodoni Moda", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: #a0a0a0;
+    color: #eaeaea;
+    font-size: 1.3rem;
 }
+.nav--contacto {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav--combo {
+    color: #bcb300;
+}
+.logo-contacto {
+    width: 60px;
+    height: auto;
+}
+.logo-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+.logo-nav {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border: rgba(0, 0, 0, 0.644);
+    border-radius: 50%;
+    box-shadow: 1px 20px 25px rgba(0, 0, 0, 0.2);
+}
+/* Cabecera de la web */
+.site-header {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.logo {
+    width: 10rem;
+    height: auto;
+}
+.site-header h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+.site-header p {
+    font-size: 1rem;
+    text-align: center;
+}
+.separador-desktop {
+    display: none;
+}
+/* Presentación de la web */
+.Presentacion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 30vh;
+}
+.presentacion-card {
+    border: 1px solid rgba(0, 0, 0, 0.445);
+    border-radius: 12px;
+    box-shadow: 1px 15px 25px rgba(149, 123, 78, 0.555);
+    background-color: #0000007b;
+    padding: 0.5rem;
+    max-width: 500px;
+}
+.presentacion-card h2,
+.presentacion-card p {
+    text-align: center;
+    font-size: 1rem;
+}
+.subrayado {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+/* Columna para comprar los cafés */
+.pedidos-cafe {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+    gap: 4rem;
+}
+.titulo-eligecafes {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    text-align: center;
+/* Tamaño del recuadro */
+    padding: 0.5rem;
+    max-width: 250px;
+    width: 70%;
+    min-height: 50px;
+/* Decoración */
+    border: 1px solid rgba(0, 0, 0, 0.505);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.404);
+}
+.titulo-eligecafes h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+/* Estilos de las cards */
+.columna-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+article.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    min-height: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #473c2b;
+    background: linear-gradient(to bottom left, #655237e7 30%,
+    #000000b6 40%, #655237 70%);
+}
+article.card h3 {
+    font-size: 1.5rem;
+}
+article.card img {
+    object-fit: cover;
+    max-height: 250px;
+    height: 80%;
+}
+span.cafes {
+    text-decoration: 1px underline;
+    text-underline-offset: 0.5rem;
+}
+.card-cantidad {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+span.precio {
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 5px 20px 5px rgba(0, 0, 0, 0.2);
+    background-color: #5f5234c8;
+    font-size: 1.3rem;
+}
+.botones {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    max-width: 120px;
+    width: 100%;
+    height: auto;
+}
+.botones button {
+    max-width: 150px;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+button.sumar, 
+button.restar {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+}
+/* Tipografías para las tarjetas */
+span.precio {
+    color: #fff;
 
+    font-family: "Josefin Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+span.cantidad-numero {
+    color: #fff;
+
+    font-family: "Josefin Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+article.card h3 {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: #fff;
+}
+/* Recuadro para el monto total de la compra */
+.recuadro-total {
+/* Posicionamiento */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+/* Tamaño del contenedor */
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #2727268f;
+    padding-top: 4rem;
+}
+.recuadro-total h3 {
+    font-size: 1rem;
+}
+.cancelar-resumen {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 1rem;
+    margin-top: -4rem;
+}
+.resumen-compra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 2rem;
+}
+.resumen-compra hr {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 .item-resumen {
     display: none;
 }
-
 .item-resumen.activo {
     display: block;
 }
-
+p.title-total {
+    font-size: 1.5rem;
+}
 .total-subrayado {
     text-decoration: underline 2px solid #a0a0a0;
     text-underline-offset: 6px;
 }
-
 /* Boton de reset resumen */
 .cancelar-resumen {
     display: flex;
     justify-content: flex-end;
 }
-
 #btn-reset {
     display: flex;
     align-items: center;
@@ -442,360 +484,306 @@ article.card h3 {
     border: none;
     padding: 0;
     cursor: pointer;
-
     -webkit-tap-highlight-color: transparent;
 }
-
 #btn-reset span {
     display: inline-block;
 }
-
-.aviso-carrito {
-    font-size: 0.8rem;
-    line-height: 1;
-
-    font-family: "Bodoni Moda", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    color: #7f7f7f71;
-}
 /* Botón para pagar */
+.boton-pagar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+}
 .btn-pagar {
-    display: block;
-    margin: 20px auto 0;
-    padding: 25px 70px;
-    border-radius: 8px;
-    border: 1px rgba(255, 255, 255, 0.16);
-    background: rgba(41, 40, 40, 0.9);
-    color: #fff;
-
-    font-size: 1.5rem;
+    max-width: 150px;
+    width: 100%;
+    height: 3rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #171717b3;
+    
     font-family: "Bodoni Moda", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-size: 1.3rem;
     color: #ffffff;
 }
-
 /* Modal de pago */
 .modal-pago {
-    display: block;
-    opacity: 0.8;
-    transform: translateY(100%);
-    transition: 400ms ease-out;
-
-
+    display: grid;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    
-    background: rgb(152, 136, 109);
-    padding: 30px;
-    border-radius: 8px;
+    inset: 0;
+    overflow-y: auto;
+    grid-template-rows: auto 1fr;
+    z-index: 120;
+    background-color: #655030;
+/* Estado inicial */
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+    pointer-events: none;
 }
-
 .modal-pago.activo {
     opacity: 1;
     transform: translateY(0);
-    z-index: 130;
+    pointer-events: auto;
 }
-
-.banner-titulo {
-    background-color: #daa85d;
-    margin: -30px -30px 0 -30px;
-    padding: 25px;
-    border-radius: 10px;
-    border: 3px #000000;
-}
-
-.modal-pago h3 {
-    color: #000000;
-
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100px;
-    font-style: normal;
-    font-size: 1.6rem;
-}
-
-.btn-cerrar {
-    margin-top: 20px;
-    padding: 18px 30px;
-    border-radius: 7px;
-    border: 1px rgb(22, 22, 22);
-    margin-left: 80%;
-    background-color: rgba(44, 42, 42, 0.16);
-}
-
-label {
+.modal-banner {
     display: flex;
-    margin-top: 35px;
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300px;
-    font-style: normal;
-    font-size: 1.4rem;
-}
-
-#form-pago input {
-    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    background-color: #ffffff;
+    min-height: 6rem;
+    padding: 1rem;
+    background-color: #473c2b;
+    background: linear-gradient(to bottom, #6d381b90 80%, transparent);
 }
-
-span.subrayado-label {
-    text-decoration: underline 2px rgba(0, 0, 0, 0.938);
-    text-underline-offset: 5px;
-}
-
-.btn-confirmar {
-    padding: 15px 25px;
-    margin-top: 20px;
-    background-color: #7e7e7e;
-    color: #000000d2;
-    font-size: 20px;
-    border: 1px rgba(255, 255, 255, 0.16);
-}
-
-.recuadro-pago {
-    border: 1px solid #3b3b3b;
-    border-radius: 8px;
-    padding: 10px 30px 30px 30px ;
-    margin-top: 25px;
-}
-
-.recuadro-total hr {
-    border-color: rgba(143, 143, 143, 0.35);
-}
-
-/* Sección de contactos */
-#form-bandeja {
-    display: block;
-    align-content: center;
-    border: 1px rgba(0, 0, 0, 0.35);
-    border-radius: 4px;
-    padding: 7px;
-}
-
-#serviciosForm textarea, 
-#serviciosForm input {
-    width: 365px;
-    margin-top: 5px;
-    color: #000000;
-    background-color: #a1a1a1;
-    border: 1px rgba(55, 55, 55, 0.16);
-    margin-bottom: 8px;
-    border-radius: 4px;
-    text-align: left;
-    font-size: 20px;
-    padding: 15px;
-
-    font-family: "Unlock", serif;
+.modal-banner h3 {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: #000000;
-
-    box-shadow: 1px 5px 45px rgba(0, 0, 0, 0.35);
+    font-size: 1rem;
+    color: #ebebeb;
 }
-
-input {
-    height: 50px;
+.modal-hijo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 2rem;
+    gap: 3rem;
+    width: 100%;
 }
-
-.bandeja-email label {
-    margin-bottom: 10px;
-    color: #ffffff;
+.recuadro-pago {
+    display: flex;
+    width: 80vw;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.025);
+    border-radius: 5px;
+    background-color: #7b5d38;
+    box-shadow: 1px 10px 25px rgba(0, 0, 0, 0.404);
+}
+.formulario-pago {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+#form-pago {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+#form-pago label {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: #ebebeb;
+}
+.subrayado-label {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+#form-pago input {
+    width: 100%;
+    height: 3rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+#form-pago button {
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    background-color: rgba(79, 79, 79, 0.719);
 
     font-family: "Bodoni Moda", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: #fff;
+    font-size: 1rem;
+    color: #cdcdcd;
 }
+.cerrar-modal {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+.btn-cerrar {
+    display: flex;
+    padding: 15px;
+    width: 2.5rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
 
-.bandeja-email button {
-    padding: 15px 25px;
-    border-radius: 6px;
-    border: 1px rgba(21, 21, 21, 0.701);
-    background-color: #878686;
-    margin-bottom: 75px;
-
-    font-family: "Unlock", serif;
-    font-weight: 600;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
     font-style: normal;
-    color: #202020;
+    font-size: 1.3rem;
+    color: #000000;
 }
-
-.form-correo span {
-    text-underline-offset: 7px;
-    text-decoration: underline 1px #ffffffb6;
+/* Sección de contactos */
+.bandeja-email {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    border-radius: 5px;
+    background-color: rgba(52, 52, 52, 0.767);
+    box-shadow: 1px 15px 25px rgba(0, 0, 0, 0.445);
 }
+.form-correo {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+#serviciosForm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+#serviciosForm label {
+    font-size: 20px;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #dedede;
+}
+#serviciosForm input {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.025);
+    border-radius: 5px;
+    background-color: rgba(206, 206, 206, 0.607);
+    box-shadow: 1px 10px 25px rgba(0, 0, 0, 0.363);
 
-.redes-sociales span {
-    font-size: 30px;
-    text-decoration: underline 2px #b1b1b1;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: #000000;
+}
+#serviciosForm textarea {
+    width: 100%;
+    height: 10rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.025);
+    border-radius: 5px;
+    background-color: rgba(206, 206, 206, 0.607);
+    box-shadow: 1px 10px 25px rgba(0, 0, 0, 0.2);
+
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: #000000;
+}
+.btn-contacto {
+    min-height: 2rem;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.025);
+    border-radius: 5px;
+    background-color: rgba(128, 126, 125, 0.381);
+    box-shadow: 1px 5px 25px rgba(9, 9, 9, 0.2);
+
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: #000000;
+}
+.redes-sociales {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 1rem;
+}
+.titulo-contactos {
+    display: flex;
+    justify-self: center;
+}
+.subrayado-contacto {
+    text-decoration: underline #a4a4a4;
     text-underline-offset: 10px;
 }
-
 .redes {
     display: flex;
-    flex-direction: row;
-    gap: 1px;
-    justify-content: flex-start;
-    margin-right: 200px;
+    align-self: center;
+    padding: 1rem;
 }
-
-.redes img {
-    max-width: 100%;
-}
-
 /* Créditos */
-.derechos-creditos p {
-    font-size: 15px;
-    margin-top: 60px;
-    font-family: "Unlock", serif;
-    font-weight: 200;
-    font-style: normal;
-    color: #c6c6c6;
-    background-color: 3px 4px rgba(0, 0, 0, 0.35);
-    padding: 15px;
-    background: linear-gradient(to right, transparent, #1f1f1fbe, transparent);
-}
-
 .banner-creditos {
-  border: none;
-  height: 2px;
-  background: linear-gradient(to right, transparent, #8f8f8fbe, transparent);
-  width: 100%;
-  margin: 20px 20px 20px auto;
-  margin-top: 30px;
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    background: linear-gradient(to right, transparent, #cdcdcd, transparent);
+}  
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.derechos-creditos {
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    background-color: #00000062;
+    background: linear-gradient(to right, transparent, #000000a7, transparent);
+}
+.derechos-creditos p {
+    font-size: 10px;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #e0e0e0;
 }
 
-/* Adaptación de pantalla para desktop */
-@media (min-width: 1024px) {
-    header {
-        position: relative;
-        margin-bottom: 20px;
-        transform: scale(0.8);                                                                                                                                                                                                                                                                                                                                                                                                                      
-    }
-    .btn-hamburguesa {
-        position: fixed;
-        left: 1rem;
-        top: 2.3rem;
-        z-index: 120;
-    }
-    .site-nav {
-        z-index: 110;
-    }
+/* Adaptación para pantallas */
 
-    .overlay-menu {
-        z-index: 105;
-    }
-    .logo {
-        max-width: 15rem;
-        width: 100%;
-        top: -6rem;
-    }
-    .cabecera-web h1 {
-        font-size: 3.5rem;
-        top: -8rem;
-    }
-    .cabecera-web p {
-        font-size: 1.5rem;
-        top: -7rem;
-    }
-    /* Layout principal */
-    main {
-        display: flex;
-        gap: 2rem;
-        align-items: flex-start;
-        width: 100%;
-        transform: scale(0.9);
-    }
-    section.Presentacion {
-        flex: 1;
-    }
-    /* Columna de cafés a la derecha con scroll */
-    .presentacion-card {
-        margin-top: 1rem;
-    }
-    .columna-scroll {
-        width: 450px;
-        height: 120vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        position: sticky;
-        margin-top: -6rem;
-        border-radius: 8px;
-        padding: 20px;
-        background-color: #1f1e1c42;
-        transform: scale(0.8);
-        border: 2px solid rgba(0, 0, 0, 0.76);
-        border-radius: 15px;
 
-        box-shadow: 1px 2px 18px 8px rgba(0, 0, 0, 0.2);
-    }
-    .separador-desktop {
-        display: block;
-        width: 100vw;
-        height: 1px;
-        border: none;
-        background: rgba(36, 30, 30, 0.2);
-        border-radius: 10px;
-        
-        margin: 0;
-        padding: 6px;
-        margin-left: calc(-50vw + 50%); 
-    }
-    .recuadro-total {
-        transform: scale(0.9);
-    }
-    .btn-pagar {
-        transform: scale(0.7);
-    }
-/* Poporciones de sección de contactos */
-    .parrafo-contacto p {
-        font-size: 2rem;
-    }
-    .bandeja-email {
-        display: flex;
-        flex-direction: column;
-        max-width: 500px;
-    }
-    .bandeja-email input,
-    .bandeja-email textarea {
-        width: 100%;
-    }
-    .btn-contacto {
-        display: block;
-        width: fit-content;
-        margin-left: 0;
-    }
-    .redes-sociales h2, 
-    .redes-sociales span {
-        font-size: 2.5rem;
-        text-align: left;
-    }
-    .redes-sociales {
-        margin-left: 10rem;
-    }
-    .redes {
-        max-width: 18rem;
-    }
-/* Proporciones del modal de pago */
-     .modal-pago {
-        width: 500px;
-        left: 50%;
-        bottom: -5.5rem;
-        transform: translateY(100%) translateX(-50%) scale(0.8);
-    }
 
-    .modal-pago.activo {
-        transform: translateY(0) translateX(-50%) scale(0.8);
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

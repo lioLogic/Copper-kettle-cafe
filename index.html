@@ -39,23 +39,27 @@
     <div class="cabecera-web">
       <img src="images/Logos Cafetería de Especialidad Delicado Negro (1).png" alt="Logo de la cafetería" class="logo">
       <h1>Copper Kettle Cafe</h1>
-      <p>Café de especialidad<br>y pastelería<br>artesanal</p>
-    </div>   
-  </header>
-<!-- Presentación de la web -->  
- <hr class="separador-desktop">
-  <main>
+      <p>Café de especialidad<br> y pastelería<br> artesanal</p>
+    </div>
     <section class="Presentacion">
       <article class="presentacion-card">
         <h2>Bie<span class="subrayado">nveni</span>dos</h2>
         <p>Un espacio para disfrutar buen café, buena música y buena compañía.</p>
       </article>
     </section>
-<!-- Columna para comprar los cafés -->   
-    <section class="pedidos-cafe">
+  </header>
+<!-- Presentación de la web -->
+  <hr class="separador-desktop">
+  
+  <main>
+<!-- Columna para comprar los cafés -->  
+    <div class="bloque-izquierdo">
+      <section class="pedidos-cafe">
+      <div class="titulo-columna">
       <article class="titulo-eligecafes">
         <h2>Elige tu café</h2>
       </article> 
+    </div>
     <div class="contenedor-scroll">
       <!-- Columna de productos con scroll -->      
       <div class="columna-scroll">
@@ -145,8 +149,10 @@
       </div>
     </div>
     </section>
+    </div> 
 <!-- Monto total de la compra (recuadaro) -->
-    <section class="recuadro-total">
+    <div class="bloque-derecho">
+      <section class="recuadro-total">
        <div class="cancelar-resumen">
         <button type="button" id="btn-reset">
           <span class="icono">🗑️</span>
@@ -173,6 +179,7 @@
 <!-- Botón para pagar -->
     <div class="boton-pagar">
       <button type="button" class="btn-pagar" disabled>Pagar</button>
+    </div>
     </div>
 </main>
       
